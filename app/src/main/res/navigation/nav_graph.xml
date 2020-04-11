@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/Randomizer">
+
+    <fragment
+        android:id="@+id/Randomizer"
+        android:name="edu.gsu.refreshx.Randomizer"
+        android:label="@string/first_fragment_label"
+        tools:layout="@layout/fragment_randomizer">
+        <action
+            android:id="@+id/SelectDrink"
+            app:destination="@id/DrinkInfo" />
+    </fragment>
+    <fragment
+        android:id="@+id/DrinkInfo"
+        android:name="edu.gsu.refreshx.DrinkInfo"
+        android:label="@string/second_fragment_label"
+        tools:layout="@layout/fragment_drink_info">
+
+        <action
+            android:id="@+id/Return"
+            app:destination="@id/Randomizer" />
+    </fragment>
+</navigation>
