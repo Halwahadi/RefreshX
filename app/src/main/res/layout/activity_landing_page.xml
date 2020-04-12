@@ -82,6 +82,7 @@
         android:layout_marginBottom="7dp"
         android:background="@drawable/outlined_button"
         android:fontFamily="@font/montserrat"
+        android:onClick="register"
         android:text="Sign Up"
         android:textColor="@color/lightPurple"
         app:layout_constraintBottom_toTopOf="@+id/loginButton"
