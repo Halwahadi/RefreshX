@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterActivity"
-    android:background="#5500ff">
+    android:background="@android:color/white"
+    tools:context=".RegisterActivity">
 
     <TextView
         android:id="@+id/textView4"
@@ -17,7 +17,7 @@
         android:fontFamily="@font/montserrat"
         android:text="Sign Up"
         android:textAllCaps="true"
-        android:textColor="#F1F1F1"
+        android:textColor="@color/lightPurple"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -32,7 +32,8 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="48dp"
         android:layout_marginBottom="19dp"
-        android:backgroundTint="@android:color/white"
+        android:background="@color/lightPurple"
+        android:backgroundTint="@color/lightPurple"
         android:ems="10"
         android:fontFamily="@font/montserrat"
         android:inputType="textPersonName"
@@ -52,7 +53,8 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="48dp"
         android:layout_marginBottom="19dp"
-        android:backgroundTint="@android:color/white"
+        android:background="@color/lightPurple"
+        android:backgroundTint="@color/lightPurple"
         android:ems="10"
         android:fontFamily="@font/montserrat"
         android:inputType="textEmailAddress"
@@ -72,7 +74,8 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="48dp"
         android:layout_marginBottom="19dp"
-        android:backgroundTint="@android:color/white"
+        android:background="@color/lightPurple"
+        android:backgroundTint="@color/lightPurple"
         android:ems="10"
         android:fontFamily="@font/montserrat"
         android:hint="Password"
@@ -91,7 +94,7 @@
         android:layout_marginStart="162dp"
         android:layout_marginEnd="161dp"
         android:layout_marginBottom="52dp"
-        android:background="@drawable/white_button"
+        android:background="@drawable/outlined_button"
         android:fontFamily="@font/montserrat"
         android:text="CREATE ACCOUNT"
         android:textColor="@color/lightPurple"
@@ -108,7 +111,8 @@
         android:layout_marginTop="26dp"
         android:layout_marginEnd="48dp"
         android:layout_marginBottom="16dp"
-        android:backgroundTint="@android:color/white"
+        android:background="@color/lightPurple"
+        android:backgroundTint="@color/lightPurple"
         android:ems="10"
         android:fontFamily="@font/montserrat"
         android:inputType="textPersonName"
@@ -143,6 +147,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/textView4"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/purple_new_logo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
