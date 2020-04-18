@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LandingPage">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="249dp"
+        android:layout_height="352dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="328dp"
+        app:layout_constraintBottom_toTopOf="@+id/registerButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/purple_new_logo" />
+
+    <ImageView
+        android:id="@+id/landingPageGraphic"
+        android:layout_width="303dp"
+        android:layout_height="332dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="51dp"
+        android:layout_marginBottom="250dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/landing_page_graphic" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="214dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginBottom="42dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:gravity="center"
+        android:text="Randomly Generated Drinks Personalized For You"
+        android:textColor="@color/textColor"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.913"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="133dp"
+        android:layout_height="37dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="61dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:gravity="center"
+        android:text="Get The Best Drink Recommendations"
+        android:textColor="@color/textColor"
+        app:layout_constraintBottom_toTopOf="@+id/textView3"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="155dp"
+        android:layout_height="35dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="176dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:gravity="center"
+        android:text="Choose Among Your Favorites"
+        android:textColor="@color/textColor"
+        app:layout_constraintBottom_toTopOf="@+id/registerButton"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/registerButton"
+        android:layout_width="287dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="71dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="7dp"
+        android:background="@drawable/outlined_button"
+        android:fontFamily="@font/montserrat"
+        android:onClick="register"
+        android:text="Sign Up"
+        android:textColor="@color/lightPurple"
+        app:layout_constraintBottom_toTopOf="@+id/loginButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/landingPageGraphic" />
+
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="287dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="52dp"
+        android:background="@drawable/light_purple_button"
+        android:fontFamily="@font/montserrat"
+        android:onClick="login"
+        android:text="Log In"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registerButton" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
