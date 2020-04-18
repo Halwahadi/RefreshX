@@ -36,7 +36,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void validate(String userName, String userPassword) {
         if ((userName.equals("Drinks")) && (userPassword.equals("Drinks"))) {
-            Intent intent = new Intent(LoginActivity.this, SecondActivity.class);
+            Intent intent = new Intent(LoginActivity.this, DrinkRandomizer.class);
             startActivity(intent);
         }
 
