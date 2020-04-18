@@ -15,8 +15,16 @@ public class LandingPage extends AppCompatActivity {
         setContentView(R.layout.activity_landing_page);
     }
 
-    public void register (View view) {
+    public void register(View view) {
         Intent i = new Intent(LandingPage.this, RegisterActivity.class);
+        startActivity(i);
+
+        finish();
+    }
+
+
+    public void login(View view) {
+        Intent i = new Intent(LandingPage.this, LoginActivity.class);
         startActivity(i);
 
         finish();

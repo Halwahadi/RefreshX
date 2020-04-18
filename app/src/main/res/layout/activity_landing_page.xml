@@ -99,6 +99,7 @@
         android:layout_marginBottom="52dp"
         android:background="@drawable/light_purple_button"
         android:fontFamily="@font/montserrat"
+        android:onClick="login"
         android:text="Log In"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
