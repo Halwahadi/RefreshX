@@ -34,8 +34,14 @@ public class DrinkRandomizer extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
-        Intent intent = new Intent();
-        intent.setClass(this, SplashScreen.class);
+        Intent intent;
+        if(item.getItemId() == R.id.favorites_menu){
+            intent = new Intent(this, SplashScreen.class);
+        }
+        else{
+            intent = new Intent(this, DrinkRandomizer.class);
+        }
+        startActivity(intent);
         return true;
     }
 
