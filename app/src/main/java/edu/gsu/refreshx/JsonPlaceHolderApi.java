@@ -5,7 +5,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 public interface JsonPlaceHolderApi {
-    @GET("/user")
+    @GET("/getuser")
     Call<ApiResult> authenticate(@Query("username") String username, @Query("password") String password);
 
     @GET("/insert/user")
