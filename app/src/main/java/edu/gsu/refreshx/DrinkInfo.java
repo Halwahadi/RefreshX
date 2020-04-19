@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.google.gson.Gson;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -23,6 +25,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class DrinkInfo extends Fragment {
     private TextView name;
     private  TextView id;
+    private String dname, recipe, warnings, website, image, info;
 
     @Override
     public View onCreateView(
@@ -38,51 +41,34 @@ public class DrinkInfo extends Fragment {
         name = view.findViewById(R.id.drink_name);
         id = view.findViewById(R.id.drink_id);
 
-        // Set up API Call
-//        Retrofit retrofit = new Retrofit.Builder()
-//                .baseUrl("http://76.20.217.228/")
-//                .addConverterFactory(GsonConverterFactory.create())
-//                .build();
-//        final JsonPlaceHolderApi jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
-//
-        int drinkId = getArguments().getInt("drinkID");
-//        Call<ApiResult> result = jsonPlaceHolderApi.getDrinks(drinkId);
-//
-//        result.enqueue(new Callback<ApiResult>() {
-//            @Override
-//            public void onResponse(Call<ApiResult> call, Response<ApiResult> response) {
-//                if(!response.isSuccessful()){
-//                    Toast.makeText(getContext(), "Got error response", Toast.LENGTH_LONG).show();
-//                    try {
-//                        JSONObject errorObj = new JSONObject(response.errorBody().string());
-//                        Toast.makeText(getContext(), errorObj.getString("message"), Toast.LENGTH_LONG).show();
-//                    } catch (Exception e) {
-//                        Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_LONG).show();
-//                    }
-//                }
-//                else {
-//                    try {
-//                        JSONObject data = new JSONObject(response.body().toString());
-//
-//                        // Display data to screen
-//                    } catch (JSONException e) {
-//                        e.printStackTrace();
-//                    }
-//                    name.setText("");
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<ApiResult> call, Throwable t) {
-//                System.out.println(t);
-//                Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_LONG).show();
-//            }
-//        });
-
-
-
-        String[] data = lookupDrink(drinkId);
-
+        final int drinkId = getArguments().getInt("drinkID");
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://76.20.217.228/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        final JsonPlaceHolderApi jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
+        Call<ApiResult> result = jsonPlaceHolderApi.getdrink(drinkId, dname, recipe, warnings, website, image);
+        System.out.println(result.toString());
+        result.enqueue(new Callback<ApiResult>() {
+            @Override
+            public void onResponse(Call<ApiResult> call, Response<ApiResult> response) {
+                if(!response.isSuccessful()) {
+                    Toast.makeText(getActivity().getApplicationContext(), "Invalid drink id", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                else{
+                    ApiResult.drinkinfo drinkinfo = response.body().getDrink().get(0);
+                    name.setText("Name: "+ drinkinfo.getName());
+                    id.setText("ID: "+ drinkId);
+                }
+            }
+            @Override
+            public void onFailure(Call<ApiResult> call, Throwable t) {
+                Toast.makeText(getActivity().getApplicationContext(), "Cannot connect to server", Toast.LENGTH_LONG).show();
+            }
+        });
+        
+        /*String[] data = lookupDrink(drinkId, dname,recipe, warnings, website, image);
         if (data != null) {
             name.setText("Name: "+ data[0]);
             id.setText("ID: "+data[1]);
@@ -90,7 +76,7 @@ public class DrinkInfo extends Fragment {
         else {
             name.setText("Something Went Wrong");
             id.setText("Something Went Wrong");
-        }
+        }*/
         //Set up return onclick
         view.findViewById(R.id.button_second).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,9 +93,10 @@ public class DrinkInfo extends Fragment {
      * @param id of drink
      * @return String array filled with values of drink or null if invalid id
      */
-    private String[] lookupDrink(int id){
-        String[] temp = new String[2];
-        switch (id){
+    private String[] lookupDrink(int id, String name, String recipe, String warnings, String website, String image){
+
+
+       /* switch (id){
             case 0:
                 temp[0] = "water";
                 temp[1] = "" + id;
@@ -129,6 +116,7 @@ public class DrinkInfo extends Fragment {
             default:
                 return null;
         }
-
+*/
+       return null;
     }
 }
