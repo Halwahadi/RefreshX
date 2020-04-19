@@ -11,4 +11,7 @@ public interface JsonPlaceHolderApi {
     @GET("/insert/user")
     Call <ApiResult> createUser(@Query("name") String name, @Query("username") String username, @Query("password") String password, @Query("email") String email);
 
+    @GET("/getdrink")
+    Call <ApiResult> getdrink(@Query("id") int id, @Query("dname") String dname, @Query("recipe") String recipe,
+                              @Query("warnings") String warnings, @Query("website") String website, @Query("image") String image);
 }

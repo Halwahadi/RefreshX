@@ -58,13 +58,12 @@
         android:backgroundTint="@color/lightPurple"
         android:ems="10"
         android:fontFamily="@font/montserrat"
-        android:inputType="textEmailAddress"
         android:hint="Email"
-        android:textColorHint="#FFFFFF" 
+        android:inputType="textEmailAddress"
         android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/passwordInput"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/usernameInput" />
 
@@ -94,6 +93,7 @@
         android:layout_width="161dp"
         android:layout_height="49dp"
         android:layout_marginStart="162dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="161dp"
         android:layout_marginBottom="52dp"
         android:background="@drawable/outlined_button"
@@ -102,8 +102,8 @@
         android:textColor="@color/lightPurple"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.508"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordInput" />
 
     <EditText
         android:id="@+id/nameInput"
@@ -138,18 +138,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        tools:src="@drawable/ic_back_button" />
+        tools:src="?attr/actionModeCloseDrawable" />
 
     <ImageView
         android:id="@+id/logo"
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:layout_marginStart="7dp"
-        android:layout_marginEnd="56dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="-10dp"
         android:src="@drawable/white_logo"
+        app:layout_constraintBottom_toTopOf="@+id/nameInput"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/textView4"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/purple_new_logo" />
 
