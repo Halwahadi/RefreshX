@@ -1,8 +1,15 @@
 package edu.gsu.refreshx;
 
 import android.content.Intent;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
+import android.text.style.UnderlineSpan;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -36,17 +43,34 @@ public class LoginActivity extends AppCompatActivity {
         Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(Username.getText().toString() == ""){
+                if (Username.getText().toString() == "") {
                     Toast.makeText(getApplicationContext(), "You must enter username", Toast.LENGTH_LONG).show();
-                }
-                else if(Username.getText().toString() == ""){
+                } else if (Username.getText().toString() == "") {
                     Toast.makeText(getApplicationContext(), "You must enter password", Toast.LENGTH_LONG).show();
-                }
-                else{
+                } else {
                     validate(Username.getText().toString(), Password.getText().toString());
                 }
             }
         });
+
+        //Sign up Span text
+        TextView signupLink = findViewById(R.id.signUpLink);
+        String text = "Sign up for RefreshX";
+
+        SpannableString ss = new SpannableString(text);
+        ClickableSpan clickableSpan = new ClickableSpan() {
+            @Override
+            public void onClick(@NonNull View widget) {
+                Intent i = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(i);
+            }
+        };
+
+        ss.setSpan(clickableSpan, 0, 20, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        signupLink.setText(ss);
+        signupLink.setMovementMethod(LinkMovementMethod.getInstance());
+
     }
 
     private void validate(String userName, String userPassword) {
