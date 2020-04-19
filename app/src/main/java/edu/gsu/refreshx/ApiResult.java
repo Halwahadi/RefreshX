@@ -9,7 +9,7 @@ public class ApiResult {
     String message;
 
     List<User> users = new ArrayList<>();
-
+    List<drinkinfo> drink = new ArrayList<>();
     public ApiResult(){ }
     public String getMessage() {
         return message;
@@ -17,6 +17,8 @@ public class ApiResult {
     public List<User> getUsers() {
         return users;
     }
+
+    public List<drinkinfo> getDrink() { return drink;}
 
     public class User {
         @SerializedName("username")
@@ -27,6 +29,7 @@ public class ApiResult {
         private String name;
         @SerializedName("email")
         private String email;
+
         public User(){}
 
         @Override
@@ -51,5 +54,38 @@ public class ApiResult {
         }
 
     }
+    public class drinkinfo{
+        @SerializedName("dname")
+        private String dname;
+        @SerializedName("recipe")
+        private String recipe;
+        @SerializedName("warnings")
+        private String warnings;
+        @SerializedName("website")
+        private String website;
+        @SerializedName("image")
+        private String image;
 
+        public String getName() {
+            return dname;
+        }
+
+        public String getRecipe() {
+            return recipe;
+        }
+
+        public String getWarnings() {
+            return warnings;
+        }
+
+        public String getImage() {
+            return image;
+        }
+
+        public String getWebsite() {
+            return website;
+        }
+
+        public drinkinfo(){}
+    }
 }
