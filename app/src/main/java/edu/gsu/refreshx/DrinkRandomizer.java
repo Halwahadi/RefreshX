@@ -36,7 +36,7 @@ public class DrinkRandomizer extends AppCompatActivity {
         // Handle item selection
         Intent intent;
         if(item.getItemId() == R.id.favorites_menu){
-            intent = new Intent(this, SplashScreen.class);
+            intent = new Intent(this, WebsiteListActivity.class);
         }
         else{
             intent = new Intent(this, DrinkRandomizer.class);
