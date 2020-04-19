@@ -15,6 +15,9 @@
 
         <activity android:name=".LandingPage" />
         <activity android:name=".LoginActivity" />
+        <activity android:name=".WebsiteListActivity" />
+        <activity android:name=".ItemDetailActivity" />
+
         <activity
             android:name=".DrinkRandomizer"
             android:label="@string/title_activity_drink_randomizer"
