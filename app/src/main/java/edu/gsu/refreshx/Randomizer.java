@@ -24,7 +24,7 @@ public class Randomizer extends Fragment {
         view.findViewById(R.id.next_button).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                int drinkId =  (int) (Math.random()*4);
+                int drinkId =  (int) (Math.random()*12+1);
                 Bundle args = new Bundle();
                 args.putInt("drinkID", drinkId);
                 NavHostFragment.findNavController(Randomizer.this).navigate(R.id.SelectDrink,args);

@@ -5,12 +5,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class DrinkInfo extends Fragment {
+    private TextView name;
+    private  TextView id;
 
     @Override
     public View onCreateView(
@@ -23,10 +35,51 @@ public class DrinkInfo extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        name = view.findViewById(R.id.drink_name);
+        id = view.findViewById(R.id.drink_id);
 
+        // Set up API Call
+//        Retrofit retrofit = new Retrofit.Builder()
+//                .baseUrl("http://76.20.217.228/")
+//                .addConverterFactory(GsonConverterFactory.create())
+//                .build();
+//        final JsonPlaceHolderApi jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
+//
         int drinkId = getArguments().getInt("drinkID");
-        TextView name = view.findViewById(R.id.drink_name);
-        TextView id = view.findViewById(R.id.drink_id);
+//        Call<ApiResult> result = jsonPlaceHolderApi.getDrinks(drinkId);
+//
+//        result.enqueue(new Callback<ApiResult>() {
+//            @Override
+//            public void onResponse(Call<ApiResult> call, Response<ApiResult> response) {
+//                if(!response.isSuccessful()){
+//                    Toast.makeText(getContext(), "Got error response", Toast.LENGTH_LONG).show();
+//                    try {
+//                        JSONObject errorObj = new JSONObject(response.errorBody().string());
+//                        Toast.makeText(getContext(), errorObj.getString("message"), Toast.LENGTH_LONG).show();
+//                    } catch (Exception e) {
+//                        Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+//                    }
+//                }
+//                else {
+//                    try {
+//                        JSONObject data = new JSONObject(response.body().toString());
+//
+//                        // Display data to screen
+//                    } catch (JSONException e) {
+//                        e.printStackTrace();
+//                    }
+//                    name.setText("");
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<ApiResult> call, Throwable t) {
+//                System.out.println(t);
+//                Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_LONG).show();
+//            }
+//        });
+
+
 
         String[] data = lookupDrink(drinkId);
 
