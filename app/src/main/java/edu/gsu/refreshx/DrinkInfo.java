@@ -1,9 +1,13 @@
 package edu.gsu.refreshx;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -11,10 +15,9 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
-import com.google.gson.Gson;
-
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -25,7 +28,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class DrinkInfo extends Fragment {
     private TextView name;
     private  TextView id;
+    private TextView recipeText, warningText, websiteText, infoText;
+    private ImageView imageview;
     private String dname, recipe, warnings, website, image, info;
+
 
     @Override
     public View onCreateView(
@@ -40,6 +46,11 @@ public class DrinkInfo extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         name = view.findViewById(R.id.drink_name);
         id = view.findViewById(R.id.drink_id);
+        warningText = view.findViewById(R.id.warning);
+        recipeText = view.findViewById(R.id.recipe);
+        websiteText = view.findViewById(R.id.website);
+        infoText = view.findViewById(R.id.info);
+        imageview = view.findViewById(R.id.imageView);
 
         final int drinkId = getArguments().getInt("drinkID");
         Retrofit retrofit = new Retrofit.Builder()
@@ -60,6 +71,25 @@ public class DrinkInfo extends Fragment {
                     ApiResult.drinkinfo drinkinfo = response.body().getDrink().get(0);
                     name.setText("Name: "+ drinkinfo.getName());
                     id.setText("ID: "+ drinkId);
+                    recipeText.setText("Recipe:\n"+ drinkinfo.getRecipe());
+                    warningText.setText("Warning:\n"+ drinkinfo.getWarnings());
+                    websiteText.setText("Website: \n"+ drinkinfo.getWebsite());
+
+
+                    try {
+                        Log.d("URL", ""+drinkinfo.getImage());
+                        Log.d("URL", ""+image);
+                        URL url = new URL(drinkinfo.getImage());
+                        Bitmap bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
+                        imageview.setImageBitmap(bmp);
+                    } catch (MalformedURLException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+
+//                    image.setImageDrawable(drinkinfo.getImage());
                 }
             }
             @Override
