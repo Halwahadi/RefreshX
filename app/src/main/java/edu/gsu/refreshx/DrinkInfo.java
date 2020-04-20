@@ -71,9 +71,9 @@ public class DrinkInfo extends Fragment {
                     ApiResult.drinkinfo drinkinfo = response.body().getDrink().get(0);
                     name.setText("Name: "+ drinkinfo.getName());
                     id.setText("ID: "+ drinkId);
-                    recipeText.setText("Recipe:\n"+ drinkinfo.getRecipe());
-                    warningText.setText("Warning:\n"+ drinkinfo.getWarnings());
-                    websiteText.setText("Website: \n"+ drinkinfo.getWebsite());
+                    recipeText.setText(drinkinfo.getRecipe());
+                    warningText.setText(drinkinfo.getWarnings());
+                    websiteText.setText(drinkinfo.getWebsite());
 
 
                     try {

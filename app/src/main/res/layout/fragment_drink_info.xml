@@ -10,40 +10,34 @@
         android:id="@+id/website"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/montserrat"
         android:text="TextView"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="@+id/recipe"
-        app:layout_constraintTop_toBottomOf="@+id/warning" />
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/websiteTitle"
+        app:layout_constraintTop_toBottomOf="@+id/websiteTitle" />
 
     <TextView
         android:id="@+id/drink_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
+        android:fontFamily="@font/montserrat_bold"
         android:text="Your Drink"
         android:textSize="24sp"
         app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="@+id/imageView" />
-
-    <Button
-        android:id="@+id/button_second"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:text="@string/previous"
-        app:layout_constraintBottom_toTopOf="@+id/buttonFavorite"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/drink_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:fontFamily="@font/montserrat"
         android:text="Drink ID"
-        android:textSize="24sp"
+        android:textColor="@color/lightGreen"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/drink_name"
         app:layout_constraintTop_toBottomOf="@+id/drink_name" />
 
@@ -51,12 +45,13 @@
         android:id="@+id/recipe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/montserrat"
         android:text="TextView"
-        android:textSize="24sp"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/drink_id" />
+        app:layout_constraintTop_toBottomOf="@+id/recipeTtile" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -72,20 +67,74 @@
         android:id="@+id/warning"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/montserrat"
         android:text="TextView"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="@+id/recipe"
-        app:layout_constraintTop_toBottomOf="@+id/recipe" />
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/warningTitle"
+        app:layout_constraintTop_toBottomOf="@+id/warningTitle" />
 
-    <Button
+    <ImageButton
         android:id="@+id/buttonFavorite"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:text="Favorite"
+        android:layout_width="124dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="95dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="76dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_favorite_heart_24dp"
+        android:background="#00ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/button_second" />
+
+    <ImageButton
+        android:id="@+id/button_second"
+        android:layout_width="94dp"
+        android:layout_height="84dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginBottom="76dp"
+        android:scaleType="fitCenter"
+        android:src="@android:drawable/ic_menu_close_clear_cancel"
+        android:background="#00ffffff"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/recipeTtile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="77dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="Recipe"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/drink_id" />
+
+    <TextView
+        android:id="@+id/websiteTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="Website"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recipe" />
+
+    <TextView
+        android:id="@+id/warningTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="Warnings"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/website" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
