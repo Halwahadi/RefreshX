@@ -53,7 +53,7 @@ public class DrinkInfo extends Fragment {
         websiteText = view.findViewById(R.id.website);
         infoText = view.findViewById(R.id.info);
         imageview = view.findViewById(R.id.imageView);
-
+        user = new Gson().fromJson(getActivity().getIntent().getStringExtra("authenticated_user"), ApiResult.User.class);
         final int drinkId = getArguments().getInt("drinkID");
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://76.20.217.228/")
