@@ -29,7 +29,8 @@ public class ApiResult {
         private String name;
         @SerializedName("email")
         private String email;
-
+        @SerializedName("id")
+        private String id;
         public User(){}
 
         @Override
@@ -45,9 +46,9 @@ public class ApiResult {
             return password;
         }
 
-        public String getName() {
-            return name;
-        }
+        public String getId() { return id; }
+
+        public String getName() { return name; }
 
         public void setName(String name) {
             this.name = name;
