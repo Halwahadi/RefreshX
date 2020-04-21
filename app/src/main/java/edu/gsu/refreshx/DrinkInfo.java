@@ -16,6 +16,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.google.gson.Gson;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
@@ -33,7 +35,7 @@ public class DrinkInfo extends Fragment {
     private TextView recipeText, warningText, websiteText, infoText;
     private ImageView imageview;
     private String dname, recipe, warnings, website, image, info;
-    ApiResult.User user;
+    public static ApiResult.User user;
 
     @Override
     public View onCreateView(
@@ -54,7 +56,9 @@ public class DrinkInfo extends Fragment {
         infoText = view.findViewById(R.id.info);
         imageview = view.findViewById(R.id.imageView);
         user = new Gson().fromJson(getActivity().getIntent().getStringExtra("authenticated_user"), ApiResult.User.class);
+
         final int drinkId = getArguments().getInt("drinkID");
+
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://76.20.217.228/")
                 .addConverterFactory(GsonConverterFactory.create())
@@ -62,6 +66,7 @@ public class DrinkInfo extends Fragment {
         final JsonPlaceHolderApi jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
         Call<ApiResult> result = jsonPlaceHolderApi.getdrink(drinkId, dname, recipe, warnings, website, image);
         System.out.println(result.toString());
+
         result.enqueue(new Callback<ApiResult>() {
             @Override
             public void onResponse(Call<ApiResult> call, Response<ApiResult> response) {
