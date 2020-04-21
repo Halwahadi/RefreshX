@@ -33,7 +33,7 @@ public class DrinkInfo extends Fragment {
     private TextView recipeText, warningText, websiteText, infoText;
     private ImageView imageview;
     private String dname, recipe, warnings, website, image, info;
-
+    ApiResult.User user;
 
     @Override
     public View onCreateView(
@@ -110,7 +110,30 @@ public class DrinkInfo extends Fragment {
                 Toast.makeText(getActivity().getApplicationContext(), "Cannot connect to server", Toast.LENGTH_LONG).show();
             }
         });
-        
+        //Set favorite btn onclick
+        view.findViewById(R.id.buttonFavorite).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Call<ApiResult> result1 = jsonPlaceHolderApi.addFavorite(Integer.valueOf(user.getId()),String.valueOf(drinkId));
+                result1.enqueue(new Callback<ApiResult>() {
+                    @Override
+                    public void onResponse(Call<ApiResult> call, Response<ApiResult> response) {
+                        if(!response.isSuccessful()){
+                            Toast.makeText(getActivity().getApplicationContext(), "This drink is already in your favorite list", Toast.LENGTH_LONG).show();
+                            return;
+                        }
+                        else{
+                            Toast.makeText(getActivity().getApplicationContext(), "Your drink have been added", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                    @Override
+                    public void onFailure(Call<ApiResult> call, Throwable t) {
+                        Toast.makeText(getActivity().getApplicationContext(), "Cannot connect to server", Toast.LENGTH_LONG).show();
+                    }
+                });
+            }
+        });        
         /*String[] data = lookupDrink(drinkId, dname,recipe, warnings, website, image);
         if (data != null) {
             name.setText("Name: "+ data[0]);
