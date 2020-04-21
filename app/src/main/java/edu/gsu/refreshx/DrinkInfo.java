@@ -2,6 +2,7 @@ package edu.gsu.refreshx;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,6 +17,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -75,18 +77,29 @@ public class DrinkInfo extends Fragment {
                     warningText.setText(drinkinfo.getWarnings());
                     websiteText.setText(drinkinfo.getWebsite());
 
+                    Log.d("URL", ""+drinkinfo.getImage());
+                    Log.d("URL", ""+image);
 
-                    try {
-                        Log.d("URL", ""+drinkinfo.getImage());
-                        Log.d("URL", ""+image);
-                        URL url = new URL(drinkinfo.getImage());
-                        Bitmap bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
-                        imageview.setImageBitmap(bmp);
-                    } catch (MalformedURLException e) {
-                        e.printStackTrace();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                    final String imageUrl;
+                    imageUrl = drinkinfo.getImage();
+
+                        new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                try {
+                                    URL url = new URL(imageUrl);
+                                    Bitmap bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
+                                    imageview.setImageBitmap(bmp);
+                                } catch (MalformedURLException e) {
+//                                    e.printStackTrace();
+                                    Log.w("Image Error", e.toString());
+                                } catch (IOException e) {
+                                    Log.w("Image Error", e.toString());
+//                                    e.printStackTrace();
+                                }
+                            }
+                        });
+                        Log.i("Image", "Image was processed without error");
 
 
 //                    image.setImageDrawable(drinkinfo.getImage());
