@@ -12,29 +12,26 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-
+        <activity android:name=".FavoriteList"></activity>
         <activity android:name=".LandingPage" />
         <activity android:name=".LoginActivity" />
-        <activity android:name=".WebsiteListActivity" />
-        <activity android:name=".ItemDetailActivity" />
-
         <activity
             android:name=".DrinkRandomizer"
             android:label="@string/title_activity_drink_randomizer"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name=".SplashScreen"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".RegisterActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>

@@ -15,13 +15,13 @@
             app:destination="@id/DrinkInfo" />
     </fragment>
     <fragment
-        android:id="@+id/DrinkInfo"
-        android:name="edu.gsu.refreshx.DrinkInfo"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_drink_info">
+    android:id="@+id/DrinkInfo"
+    android:name="edu.gsu.refreshx.DrinkInfo"
+    android:label="@string/second_fragment_label"
+    tools:layout="@layout/fragment_drink_info">
 
-        <action
-            android:id="@+id/Return"
-            app:destination="@id/Randomizer" />
+    <action
+        android:id="@+id/Return"
+        app:destination="@id/Randomizer" />
     </fragment>
 </navigation>

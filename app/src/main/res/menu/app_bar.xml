@@ -5,4 +5,6 @@
         android:id="@+id/favorites_menu"/>
     <item android:title="Go Back"
         android:id="@+id/goback_menu"/>
+    <item android:title="Sign Out"
+        android:id="@+id/signout_menu"/>
 </menu>
