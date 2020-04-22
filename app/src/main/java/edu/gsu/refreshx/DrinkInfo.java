@@ -17,6 +17,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.google.gson.Gson;
+import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -88,7 +89,7 @@ public class DrinkInfo extends Fragment {
                     final String imageUrl;
                     imageUrl = drinkinfo.getImage();
 
-                        new Thread(new Runnable() {
+                       /* new Thread(new Runnable() {
                             @Override
                             public void run() {
                                 try {
@@ -107,6 +108,9 @@ public class DrinkInfo extends Fragment {
                         Log.i("Image", "Image was processed without error");
 
 
+                        */
+
+                        Picasso.get().load(imageUrl).into(imageview);
 //                    image.setImageDrawable(drinkinfo.getImage());
                 }
             }
@@ -138,7 +142,7 @@ public class DrinkInfo extends Fragment {
                     }
                 });
             }
-        });        
+        });
         /*String[] data = lookupDrink(drinkId, dname,recipe, warnings, website, image);
         if (data != null) {
             name.setText("Name: "+ data[0]);
