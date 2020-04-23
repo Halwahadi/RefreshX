@@ -38,6 +38,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class FavoriteList extends AppCompatActivity {
     private ApiResult.User user;
     ArrayList<String> listDrinks = new ArrayList<String>();
+    ArrayList<String> drinkIds = new ArrayList<String>();
     
     ListView listView;
     public String drink_id;
@@ -93,14 +94,14 @@ public class FavoriteList extends AppCompatActivity {
                     return;
                 }
                 //when request successfully
-                else{
-                    List<String> temp = new ArrayList<String>();
+                else {
+//                    List<String> temp = new ArrayList<String>();
                     final List<String> drink_name = new ArrayList<String>();
                     ApiResult.drinkList drinkList;
                     // add all drink_id of that user_id to temp array list
-                    for(int i = 0; i < response.body().getDrinklist().size(); i++){
+                    for (int i = 0; i < response.body().getDrinklist().size(); i++) {
                         drinkList = response.body().getDrinklist().get(i);
-                        temp.add(drinkList.getDrink_id());
+                        drinkIds.add(drinkList.getDrink_id());
                     }
                     System.out.println("Inside the queue....................................");
                     Retrofit retrofit1 = new Retrofit.Builder()
@@ -109,12 +110,12 @@ public class FavoriteList extends AppCompatActivity {
                             .build();
                     final JsonPlaceHolderApi jsonPlaceHolderApi1 = retrofit1.create(JsonPlaceHolderApi.class);
 
-                    final String[] drinkNames= {};
+                    final String[] drinkNames = {};
                     //Get the name for each drink
-                    for(int j = 0;j < temp.size(); j++) {
+                    for (int j = 0; j < drinkIds.size(); j++) {
                         //get drink name from those drink id
 
-                        Call<ApiResult> result = jsonPlaceHolderApi1.getdrink(Integer.valueOf(temp.get(j)), dname, recipe, warnings, website, image);
+                        Call<ApiResult> result = jsonPlaceHolderApi1.getdrink(Integer.valueOf(drinkIds.get(j)), dname, recipe, warnings, website, image);
                         result.enqueue(new Callback<ApiResult>() {
                             @Override
                             public void onResponse(Call<ApiResult> call, Response<ApiResult> response) {
@@ -127,8 +128,8 @@ public class FavoriteList extends AppCompatActivity {
                                     System.out.println(drinkinfo.getName());
                                     String name = drinkinfo.getName();
                                     listDrinks.add(name);
-                                    System.out.println("added successfully, now list size become: "+ listDrinks.size());
-
+                                    System.out.println("added successfully, now list size become: " + listDrinks.size());
+                                    updateDisplay();
                                 }
                             }
 
@@ -138,18 +139,6 @@ public class FavoriteList extends AppCompatActivity {
                             }
                         });
                     }
-                    System.out.println("listdrink outside for loop and the size =" + listDrinks.size() + "............");
-                    final ArrayAdapter<String> adapter = new ArrayAdapter<String>(FavoriteList.this, android.R.layout.simple_list_item_1, listDrinks);
-                    listView.setAdapter(adapter);
-
-                    listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                        @Override
-                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                            String mydrinks = listDrinks.get(position);
-
-                            Toast.makeText(FavoriteList.this, "You've clicked on " + mydrinks, Toast.LENGTH_LONG).show();
-                        }
-                    });
                 }
             }
             @Override
@@ -158,6 +147,23 @@ public class FavoriteList extends AppCompatActivity {
             }
         });
        // final String[] drinkNames= {"Milk", "Chocolate", "Water"};
+    }
+
+    private void updateDisplay() {
+        super.onStart();
+
+        System.out.println("listdrink outside for loop and the size =" + listDrinks.size() + "............");
+        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(FavoriteList.this, android.R.layout.simple_list_item_1, listDrinks);
+        listView.setAdapter(adapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String mydrinks = listDrinks.get(position);
+
+                Toast.makeText(FavoriteList.this, "You've clicked on " + mydrinks, Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     /*ArrayList<DrinkInfo> drinks;
