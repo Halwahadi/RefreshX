@@ -80,6 +80,7 @@ public class LoginActivity extends AppCompatActivity {
                 .build();
         final JsonPlaceHolderApi jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
         Call<ApiResult> result = jsonPlaceHolderApi.authenticate(userName, userPassword);
+        System.out.println(result.toString());
         result.enqueue(new Callback<ApiResult>() {
             @Override
             public void onResponse(Call<ApiResult> call, Response<ApiResult> response) {
@@ -89,6 +90,7 @@ public class LoginActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(getApplicationContext(), "Successfully authenticated", Toast.LENGTH_LONG).show();
                     ApiResult.User authenticatedUser = response.body().getUsers().get(0);
+
                     Intent intent = new Intent(LoginActivity.this, DrinkRandomizer.class);
                     intent.putExtra("authenticated_user", new Gson().toJson(authenticatedUser));
                     startActivity(intent);

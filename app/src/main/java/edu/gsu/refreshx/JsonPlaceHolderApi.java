@@ -16,4 +16,7 @@ public interface JsonPlaceHolderApi {
                               @Query("warnings") String warnings, @Query("website") String website, @Query("image") String image);
     @GET("/addfavo")
     Call <ApiResult> addFavorite(@Query("user_id") int user_id, @Query("drink_id") String drink_id);
+
+    @GET("/getlist")
+    Call <ApiResult> getList(@Query("user_id") String user_id, @Query("drink_id") String drink_id);
 }

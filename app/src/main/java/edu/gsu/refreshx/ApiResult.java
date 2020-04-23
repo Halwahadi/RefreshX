@@ -10,6 +10,7 @@ public class ApiResult {
 
     List<User> users = new ArrayList<>();
     List<drinkinfo> drink = new ArrayList<>();
+    List<drinkList> drinkList= new ArrayList<>();
     public ApiResult(){ }
     public String getMessage() {
         return message;
@@ -17,7 +18,7 @@ public class ApiResult {
     public List<User> getUsers() {
         return users;
     }
-
+    public List<drinkList> getDrinklist(){ return drinkList;}
     public List<drinkinfo> getDrink() { return drink;}
 
     public class User {
@@ -54,6 +55,20 @@ public class ApiResult {
             this.name = name;
         }
 
+    }
+    public class drinkList{
+        @SerializedName("user_id")
+        private String user_id;
+        @SerializedName("drink_id")
+        private String drink_id;
+        public drinkList(){}
+
+        public String toString(){
+            return "drink_id" + drink_id;
+        }
+        public String getDrink_id() {
+            return drink_id;
+        }
     }
     public class drinkinfo{
         @SerializedName("dname")
